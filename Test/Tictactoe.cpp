@@ -13,48 +13,32 @@ Tictactoe::Tictactoe() : _symboleCourant('X'), _numeroTour(0), _tour(true) {}
     }
 
     void Tictactoe::ajouteSymbole(int x, int y){
-        char contenuActuel = _grilleDeJeu.getContent(x, y);
-        if (contenuActuel == 'X') {
-            std::cout << "Veuillez choisir une case vide" << std::endl;
+        if (_grilleDeJeu.getContent(x, y) == ' ') {
+            _grilleDeJeu.setContent(x, y, _symboleCourant);
+            _symboleCourant == 'X' ? _symboleCourant = 'O' : _symboleCourant = 'X';
         }
-        else if (contenuActuel == 'O') {
-            std::cout << "Veuillez choisir une case vide" << std::endl;
-        }
-        else {
-            _grilleDeJeu.setContent(x, y ,_symboleCourant);
-            _numeroTour += 1;
-            if (_tour == false) {
-                _tour = true;
-            }
-            else {
-                _tour = false;
-            }
+        else { 
+            std::cout << "Coup incorrect. Veuillez entrer un nouveau numéro de case !";
+            int numeroCase;
+            std::cin >> numeroCase;
+            this->ajouteSymbole((numeroCase - 1) % 3, (numeroCase - 1) / 3);
         }
         
     }
 
     bool Tictactoe::testeVictoireVerticale(){
-        char contenu1 = _grilleDeJeu.getContent(0, 0);
-        char contenu2 = _grilleDeJeu.getContent(1, 0);
-        char contenu3 = _grilleDeJeu.getContent(2, 0);
-        char contenu4 = _grilleDeJeu.getContent(3, 0);
-        char contenu5 = _grilleDeJeu.getContent(4, 0);
-        char contenu6 = _grilleDeJeu.getContent(5, 0);
-        char contenu7 = _grilleDeJeu.getContent(6, 0);
-        char contenu8 = _grilleDeJeu.getContent(7, 0);
-        char contenu9 = _grilleDeJeu.getContent(8, 0);
 
-        if (contenu1 == _symboleCourant &&  contenu4 == _symboleCourant && contenu7 == _symboleCourant) {
+        if (_grilleDeJeu.getContent((1 - 1) % 3, (1 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((4 - 1) % 3, (4 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((7 - 1) % 3, (7 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
         }
-        else if (contenu2 == _symboleCourant && contenu5 == _symboleCourant && contenu8 == _symboleCourant) {
+        else if (_grilleDeJeu.getContent((2 - 1) % 3, (2 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((5 - 1) % 3, (5 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((8 - 1) % 3, (8 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
         }
-        else if (contenu3 == _symboleCourant && contenu6 == _symboleCourant && contenu9 == _symboleCourant) {
+        else if (_grilleDeJeu.getContent((3 - 1) % 3, (3 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((6 - 1) % 3, (6 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((9 - 1) % 3, (9 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
@@ -65,27 +49,18 @@ Tictactoe::Tictactoe() : _symboleCourant('X'), _numeroTour(0), _tour(true) {}
     }
 
     bool Tictactoe::testeVictoireHorizontale(){
-        char contenu1 = _grilleDeJeu.getContent(0, 0);
-        char contenu2 = _grilleDeJeu.getContent(1, 0);
-        char contenu3 = _grilleDeJeu.getContent(2, 0);
-        char contenu4 = _grilleDeJeu.getContent(3, 0);
-        char contenu5 = _grilleDeJeu.getContent(4, 0);
-        char contenu6 = _grilleDeJeu.getContent(5, 0);
-        char contenu7 = _grilleDeJeu.getContent(6, 0);
-        char contenu8 = _grilleDeJeu.getContent(7, 0);
-        char contenu9 = _grilleDeJeu.getContent(8, 0);
 
-        if (contenu1 == _symboleCourant && contenu2 == _symboleCourant && contenu3 == _symboleCourant) {
+        if (_grilleDeJeu.getContent((1 - 1) % 3, (1 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((2 - 1) % 3, (2 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((3 - 1) % 3, (3 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
         }
-        else if (contenu4 == _symboleCourant && contenu5 == _symboleCourant && contenu6 == _symboleCourant) {
+        else if (_grilleDeJeu.getContent((4 - 1) % 3, (4 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((5 - 1) % 3, (5 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((6 - 1) % 3, (6 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
         }
-        else if (contenu7 == _symboleCourant && contenu8 == _symboleCourant && contenu9 == _symboleCourant) {
+        else if (_grilleDeJeu.getContent((7 - 1) % 3, (7 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((8 - 1) % 3, (8 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((9 - 1) % 3, (9 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
@@ -96,18 +71,13 @@ Tictactoe::Tictactoe() : _symboleCourant('X'), _numeroTour(0), _tour(true) {}
     }
 
     bool Tictactoe::testeVictoireDiagonale(){
-        char contenu1 = _grilleDeJeu.getContent(0, 0);
-        char contenu3 = _grilleDeJeu.getContent(2, 0);
-        char contenu5 = _grilleDeJeu.getContent(4, 0);
-        char contenu7 = _grilleDeJeu.getContent(6, 0);
-        char contenu9 = _grilleDeJeu.getContent(8, 0);
 
-        if (contenu1 == _symboleCourant && contenu5 == _symboleCourant && contenu9 == _symboleCourant) {
+        if (_grilleDeJeu.getContent((1 - 1) % 3, (1 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((5 - 1) % 3, (5 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((9 - 1) % 3, (9 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
         }
-        else if (contenu3 == _symboleCourant && contenu5 == _symboleCourant && contenu7 == _symboleCourant) {
+        else if (_grilleDeJeu.getContent((3 - 1) % 3, (3 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((5 - 1) % 3, (5 - 1) / 3) == _symboleCourant && _grilleDeJeu.getContent((7 - 1) % 3, (7 - 1) / 3) == _symboleCourant) {
             _grilleDeJeu.affiche();
             std::cout << "Partie terminé" << std::endl;
             return true;
@@ -129,14 +99,7 @@ Tictactoe::Tictactoe() : _symboleCourant('X'), _numeroTour(0), _tour(true) {}
     }
 
     void Tictactoe::finTour(){
-        // à compléter
-        if (_tour == false) {
-            _symboleCourant = 'O';
-        }
-        else {
-            _symboleCourant = 'X';
-        }
-
+        _numeroTour += 1;
    }
 
 #endif
