@@ -1,0 +1,6 @@
+﻿  des.cpp
+  main.cpp
+main.obj : error LNK2005: "public: void __thiscall Des::attributionValeur(void)" (?attributionValeur@Des@@QAEXXZ) déjà défini(e) dans des.obj
+main.obj : error LNK2005: "public: int __thiscall Des::getValeur(void)" (?getValeur@Des@@QAEHXZ) déjà défini(e) dans des.obj
+main.obj : error LNK2005: "public: __thiscall Des::Des(void)" (??0Des@@QAE@XZ) déjà défini(e) dans des.obj
+C:\Users\a.riallot\Documents\GitHub\Spe_Prog\Yams\Release\Yams.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés

@@ -1,0 +1,2 @@
+﻿  Biblio.cpp
+C:\Users\a.riallot\Documents\GitHub\Spe_Prog\Biblio\Biblio.cpp(2,10): fatal error C1083: Impossible d'ouvrir le fichier include : 'gtkmm.h' : No such file or directory
