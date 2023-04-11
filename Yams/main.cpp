@@ -101,19 +101,44 @@ int main() {
 				pablo->replaceValeur(1, score);
 			}
 			else if (choix == "2") {
-
+				for (int i = 0; i < 5; i++) {
+					if (listDes[i]->getValeur() == 2) {
+						score = score + 2;
+					}
+				}
+				pablo->replaceValeur(2, score);
 			}
 			else if (choix == "3") {
-
+				for (int i = 0; i < 5; i++) {
+					if (listDes[i]->getValeur() == 3) {
+						score = score + 3;
+					}
+				}
+				pablo->replaceValeur(3, score);
 			}
 			else if (choix == "4") {
-
+				for (int i = 0; i < 5; i++) {
+					if (listDes[i]->getValeur() == 4) {
+						score = score + 4;
+					}
+				}
+				pablo->replaceValeur(4, score);
 			}
 			else if (choix == "5") {
-
+				for (int i = 0; i < 5; i++) {
+					if (listDes[i]->getValeur() == 5) {
+						score = score + 5;
+					}
+				}
+				pablo->replaceValeur(5, score);
 			}
 			else if (choix == "6") {
-
+				for (int i = 0; i < 5; i++) {
+					if (listDes[i]->getValeur() == 6) {
+						score = score + 3;
+					}
+				}
+				pablo->replaceValeur(6, score);
 			}
 		}
 	}
