@@ -9,6 +9,8 @@ int main() {
 	srand((unsigned int)time(0));
 	string selection = "";
 	string choix = "";
+	vector<string> chiffre = { "1", "2", "3", "4", "5", "6" };
+	bool correctChoice = false;
 	int compteRelance = 0;
 	int score = 0;
 	Des* des1 = new Des();
@@ -18,7 +20,7 @@ int main() {
 	Des* des5 = new Des();
 
 	Player* pablo = new Player();
-	bool gameend = true;
+	int nbCase = 0;
 	vector<Des*> listDes;
 
 	listDes.push_back(des1);
@@ -27,9 +29,9 @@ int main() {
 	listDes.push_back(des4);
 	listDes.push_back(des5);
 
-	while (gameend) {
+	while (nbCase != 6) {
 		choix = "";
-		while (compteRelance != 2) {
+		while (compteRelance != 3) {
 			selection = "";
 			for (int i = 0; i < 5; i++) {
 				if (listDes[i]->relance() == "") {
@@ -89,8 +91,8 @@ int main() {
 		}
 		cout << "Regardons les combinaisons disponilbles" << endl;
 		cout << "Sur numéro voulez vous scorer ?" << endl;
-		cin >> choix;
-		while (choix != "") {
+		while (count(chiffre.begin(), chiffre.end(), choix) == false) {
+			cin >> choix;
 			score = 0;
 			if (choix == "1") {
 				for (int i = 0; i < 5; i++) {
@@ -98,7 +100,7 @@ int main() {
 						score = score + 1;
 					}
 				}
-				pablo->replaceValeur(1, score);
+				correctChoice = pablo->replaceValeur(0, score);
 			}
 			else if (choix == "2") {
 				for (int i = 0; i < 5; i++) {
@@ -106,7 +108,7 @@ int main() {
 						score = score + 2;
 					}
 				}
-				pablo->replaceValeur(2, score);
+				correctChoice = pablo->replaceValeur(1, score);
 			}
 			else if (choix == "3") {
 				for (int i = 0; i < 5; i++) {
@@ -114,7 +116,7 @@ int main() {
 						score = score + 3;
 					}
 				}
-				pablo->replaceValeur(3, score);
+				correctChoice = pablo->replaceValeur(2, score);
 			}
 			else if (choix == "4") {
 				for (int i = 0; i < 5; i++) {
@@ -122,7 +124,7 @@ int main() {
 						score = score + 4;
 					}
 				}
-				pablo->replaceValeur(4, score);
+				correctChoice = pablo->replaceValeur(3, score);
 			}
 			else if (choix == "5") {
 				for (int i = 0; i < 5; i++) {
@@ -130,17 +132,27 @@ int main() {
 						score = score + 5;
 					}
 				}
-				pablo->replaceValeur(5, score);
+				correctChoice = pablo->replaceValeur(4, score);
 			}
 			else if (choix == "6") {
 				for (int i = 0; i < 5; i++) {
 					if (listDes[i]->getValeur() == 6) {
-						score = score + 3;
+						score = score + 6;
 					}
 				}
-				pablo->replaceValeur(6, score);
+				correctChoice = pablo->replaceValeur(5, score);
 			}
 		}
+		if (correctChoice) {
+			nbCase++;
+			compteRelance = 0;
+		}
+	}
+	if (pablo->getValeur_total() > 62) {
+		cout << "Votre score final est de " << pablo->getValeur_total() + 35 << endl;
+	}
+	else {
+		cout << "Votre score final est de " << pablo->getValeur_total() << endl;
 	}
 	return 0;
 }

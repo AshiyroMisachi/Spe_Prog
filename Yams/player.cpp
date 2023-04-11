@@ -17,12 +17,14 @@ int Player::getValeur_total() {
 	return valeur_total;
 }
 
-int Player::replaceValeur(int numero, int score) {
-	if (valeur[numero] == -1) {
+bool Player::replaceValeur(int numero, int score) {
+	if (valeur[numero] != -1) {
 		cout << "Valeur déjà occupé" << endl;
+		return false;
 	}
 	else {
 		valeur[numero] = score;
+		return true;
 	}
 }
 

@@ -15,7 +15,7 @@ public:
 	Player();
 	int getValeur(int numero);
 	int getValeur_total();
-	int replaceValeur(int numero, int score);
+	bool replaceValeur(int numero, int score);
 };
 
 #endif
